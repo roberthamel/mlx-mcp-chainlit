@@ -7,7 +7,7 @@ serve:
 		--max-tokens 512
 
 run:
-	chainlit run main.py
+	chainlit run -w main.py
 
 install:
 	uv venv --seed -p 3.12 .venv && uv pip install -r pyproject.toml
