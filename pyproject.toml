@@ -9,8 +9,3 @@ dependencies = [
     "mlx-lm>=0.25.2",
     "openai>=1.93.0",
 ]
-
-[dependency-groups]
-dev = [
-    "pre-commit>=4.2.0",
-]
