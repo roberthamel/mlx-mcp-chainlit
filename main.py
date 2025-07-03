@@ -40,7 +40,7 @@ async def start():
 
 @cl.on_mcp_connect
 async def on_mcp_connect(connection, session: ClientSession):
-    cl.Message(f"Connected to MCP server: {connection.name}").send()
+    await cl.Message(f"Connected to MCP server: {connection.name}").send()
 
     try:
         result = await session.list_tools()
@@ -284,4 +284,17 @@ async def on_message(message: cl.Message):
 
 
 if __name__ == "__main__":
-    print("Starting Chainlit app with mlx and MCP integration...")
+    import sys
+    import signal
+    import chainlit.cli
+
+    def sigint_handler(*_):
+        print("\nShutting down gracefully (Ctrl+C pressed).")
+        sys.exit(0)
+
+    signal.signal(signal.SIGINT, sigint_handler)
+    try:
+        chainlit.cli.run(sys.argv[1:] or ["run", "main.py"])
+    except (KeyboardInterrupt, SystemExit):
+        print("\nShutting down gracefully (Ctrl+C pressed).")
+        sys.exit(0)
