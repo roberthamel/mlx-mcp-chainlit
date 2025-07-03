@@ -4,7 +4,7 @@ serve:
 		--port 13333 \
 		--model Qwen/Qwen3-8B \
 		--draft-model Qwen/Qwen3-0.6B \
-		--max-tokens 512
+		--max-tokens 64000
 
 run:
 	chainlit run -w main.py
